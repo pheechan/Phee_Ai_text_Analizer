@@ -2,7 +2,14 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
-from streamlit_chat import Message
+from langchain.chat_models import GPTAI
+from langchain.schema import (
+    SystemMessage,
+    HumanMessage,
+    AIMessage
+)
+
+# from streamlit_chat import Message
 
 # pip install streamlit-chat
 prompt1 = """Act as an AI writing analizer in English. You will receive a 
@@ -13,7 +20,7 @@ prompt2 = """Act as an AI writing analizer in German, French, Spanish. You will 
             Then you must find interesting vocabulary and store them in a list.
 
         """
-
+#pip install langchain openai
 
 
 def main():
@@ -23,11 +30,12 @@ def main():
         page_icon= '🤖'
     )
 
-    Message("Hello World")
-    Message("Hello World eiei", is_user = True)
+    # Message("Hello World")
+    # Message("Hello World eiei", is_user = True)
 
     # Set up key
     my_api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
+    
     client = openai.OpenAI(api_key=my_api_key)
     
     user_input = st.text_area("Enter the text to analyze and rewrite:", "Your text here")
