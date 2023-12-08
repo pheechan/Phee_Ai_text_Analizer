@@ -2,3 +2,4 @@ openai
 langchain
 streamlit
 pandas
+streamlit_chat
