@@ -2,12 +2,12 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
-from langchain.chat_models import GPTAI
-from langchain.schema import (
-    SystemMessage,
-    HumanMessage,
-    AIMessage
-)
+# from langchain.chat_models import GPTAI
+# from langchain.schema import (
+#     SystemMessage,
+#     HumanMessage,
+#     AIMessage
+# )
 
 # from streamlit_chat import Message
 
