@@ -28,12 +28,10 @@ prompt2 = """Act as an AI writing analizer in German, French, Spanish. You will 
 
 def main():
     # init()
-    st.set_page_config(
-            page_title='AI Text Analyzer and Rewriter',
-            page_icon= '🤖'
-        )
-    st.header('AI Text Analyzer and Rewriter 🤖')
-
+    st.title=('AI Text Analyzer and Rewriter')
+    # st.header('AI Text Analyzer and Rewriter 🤖')
+    st.markdown('Input the writing that you want to you want to check.')
+    
     # Set up key
     my_api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
     
