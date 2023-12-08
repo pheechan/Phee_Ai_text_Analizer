@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
-from langchain import Translator 
+from googletrans import Translator 
 
 prompt1 = """
 Act as an AI writing analyzer in English. You will receive a 
@@ -50,9 +50,9 @@ def main():
 
         generated_text = response['choices'][0]['message']['content']
 
-        # Translate to German using langchain
-        translator = Translator(from_lang='en', to_lang='de')
-        translated_text = translator.translate(generated_text)
+        # Translate to German using googletrans
+        translator = Translator()
+        translated_text = translator.translate(generated_text, dest='de').text
 
         st.subheader("Generated and Translated Text:")
         st.write("Original (English):", generated_text)
