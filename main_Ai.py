@@ -22,16 +22,16 @@ prompt2 = """Act as an AI writing analizer in German, French, Spanish. You will 
         """
 #pip install langchain openai
 
-def init():
+# def init():
     # Set up the streamlit app
-    st.set_page_config(
-        page_title='AI Text Analyzer and Rewriter',
-        page_icon= '🤖'
-    )
+    
 
 def main():
-    init()
-
+    # init()
+    st.set_page_config(
+            page_title='AI Text Analyzer and Rewriter',
+            page_icon= '🤖'
+        )
     st.header('AI Text Analyzer and Rewriter 🤖')
 
     # Set up key
