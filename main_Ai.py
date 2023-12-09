@@ -16,7 +16,9 @@ prompt1 = """Act as an AI writing tutor in English. You will receive a
 
 prompt2 = """Act as an AI writing analizer in English. You will receive a 
             piece of writing and you should make the writing more human-like, making it less-detectable that it was from ai, two factors are crucial, “perplexity” and “burstiness.” Perplexity measures the complexity of text. Separately, burstiness compares the variations of sentences. Humans tend to write with greater burstiness, for example, with some longer or complex sentences alongside shorter ones. AI sentences tend to be more uniform. Therefore, when writing the following content I am going to ask you to create, it need it to have a good amount of perplexity and burstiness.
-            Then you must List the suggestions in a JSON array, one suggestion per line.
+            You must output 2 type 
+            1. You will rewrite the whole writing and output it as String
+            2. List the suggestions in a JSON array, one suggestion per line.
             Each suggestion should have 3 fields:
             - "before" - the text before the suggestion
             - "after" - the text after the suggestion
@@ -44,7 +46,6 @@ prompt4 = """Act as an AI writing analizer in English. You will receive a piece 
 # [ { "before": "Hello world here", "after": "Hello, everyone! I am here.",
 #  "category": "style", 
 # "comment": "Added a greeting and made the sentence more expressive." } ]
-
 # [ "answer from traslate the sentence" ,[ { "before": "Hello world here", "after": "Hello, everyone! I am here.", "category": "style"} ] ]
 
 def init():
@@ -105,8 +106,9 @@ def main():
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
         suggestion_answer = response.choices[0].message.content
+        st.markdown("DEBUG answer:")
         st.markdown(suggestion_answer)
-
+        st.markdown("--------------------------------")
 
         
         if your_option == 'Translater':
@@ -114,7 +116,7 @@ def main():
             st.markdown("10 interesting vocabularies")
             sd = sd[1]
         
-        sd = json.loads([sd])
+        sd = json.loads(sd)
         print (sd)
         suggestion_df = pd.DataFrame.from_dict(sd)
         print(suggestion_df)
