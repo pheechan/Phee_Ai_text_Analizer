@@ -24,24 +24,24 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             - "comment" - a comment about the suggestion
             Don't say anything at first. Wait for the user to say something.
         """ 
-prompt3 = """Act as an AI writing translater, and translate text to {}.
-            You must output 2 type of answer.
-            1. You will translate the whole writing and output it as String 
-            2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
-            Then you must seperated those two type of answer, so it won't be confusing like this example : 
-            [ "Hello world", [
-                {
-                "vocabulary": "Hello",
-                "Translation": "Hallo",
-                "Example": "Hallo Ich bin John"
-                }
-            ]]
-            Each vocabulary should have 3 fields:
-            - "Vocabulary" - the text of the vocabulary
-            - "Translation" - the translation of the vocabulary
-            - "Example" - an example sentence of the vocabulary
-            Don't say anything at first. Wait for the user to say something.
-        """
+# prompt3 = """Act as an AI writing translater, and translate text to {}.
+#             You must output 2 type of answer.
+#             1. You will translate the whole writing and output it as String 
+#             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
+#             Then you must seperated those two type of answer, so it won't be confusing like this example : 
+#             [ "Hello world", [
+#                 {
+#                 "vocabulary": "Hello",
+#                 "Translation": "Hallo",
+#                 "Example": "Hallo Ich bin John"
+#                 }
+#             ]]
+#             Each vocabulary should have 3 fields:
+#             - "Vocabulary" - the text of the vocabulary
+#             - "Translation" - the translation of the vocabulary
+#             - "Example" - an example sentence of the vocabulary
+#             Don't say anything at first. Wait for the user to say something.
+#         """
 
 prompt4 = """Act as an AI writing analizer in English. You will receive a piece of generated writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
         """
@@ -75,7 +75,7 @@ def main():
     
     your_option = st.selectbox(
         "Which Function you want to do?",
-        ('pnan', 'Rewriter', 'Translater', 'f4'),
+        ('pnan', 'Rewriter', 'Translator', 'f4'),
         index=None,
         placeholder="Select Function...",
     )
@@ -84,7 +84,7 @@ def main():
     #Function Selected
     if your_option == 'pnan': your_option = prompt1
     elif your_option == 'Rewriter': your_option = prompt2
-    elif your_option == 'Translater': 
+    elif your_option == 'Translator': 
         lang_option = st.selectbox(
             "Which language do you want to translate to?",
             ("German", "French", "Spanish"),
@@ -93,8 +93,25 @@ def main():
         )
         st.write('You selected:', lang_option)
         # your_option = prompt3(lang_option)
-        formatted_prompt = prompt3.format(lang_option)
-        your_option = formatted_prompt
+        prompt3 = f"""Act as an AI writing translater, and translate text to {lang_option}.
+            You must output 2 type of answer.
+            1. You will translate the whole writing and output it as String 
+            2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
+            Then you must seperated those two type of answer, so it won't be confusing like this example : 
+            [ "Hello world", [
+                {
+                "vocabulary": "Hello",
+                "Translation": "Hallo",
+                "Example": "Hallo Ich bin John"
+                }
+            ]]
+            Each vocabulary should have 3 fields:
+            - "Vocabulary" - the text of the vocabulary
+            - "Translation" - the translation of the vocabulary
+            - "Example" - an example sentence of the vocabulary
+            Don't say anything at first. Wait for the user to say something.
+        """
+        your_option = prompt3
     elif your_option == 'f4': your_option = prompt4
     
     
