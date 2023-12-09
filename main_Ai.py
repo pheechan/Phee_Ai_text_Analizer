@@ -52,7 +52,7 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             2. Then you must list the words you corrected. List the corrected words in a JSON array, one word per line.
             Then you must separate those two types of answers, so it won't be confusing like this example : 
             [ "the corrected string", [Json Array]]
-            example formatted: 
+            example Json array formatted: 
             [ { "Incorrect": "Hllo wold her", "Correct": "Hello world here.",
                 "Context": "When I first arrived, I said, 'Hello world here'." } ]
             Each corrected word should have 3 fields:
@@ -61,7 +61,28 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             - "Context" - a sentence showing the word in context
             Don't say anything at first. Wait for the user to say something.
         """
-
+prompt5 = """Act as an AI summarizer. You will receive a piece of writing and you should summarize it while maintaining the key points.
+            You must output 2 types of answers.
+            1. You will summarize the whole writing and output it as a String.
+            2. Then you must list the key points you identified in the original text. List these key points in a JSON array, one point per line.
+            Then you must separate those two types of answers, so it won't be confusing like this example : 
+            [ "the summarized string", [Json Array]]
+            example of how you format the JSON array:
+            [
+            {
+                "KeyPoint": "The importance of AI in today's world",
+                "Context": "In the original text, the author discussed how AI is becoming increasingly important in various industries, from healthcare to finance."
+            },
+            {
+                "KeyPoint": "The challenges of implementing AI",
+                "Context": "The author also highlighted several challenges that companies may face when implementing AI, such as data privacy concerns and the need for skilled workers."
+            }
+            ]
+            Each key point should have 2 fields:
+            - "KeyPoint" - the key point identified in the original text
+            - "Context" - a sentence or paragraph from the original text that illustrates the key point
+            Don't say anything at first. Wait for the user to say something.
+        """
 # ex formatted: 
 # [ { "before": "Hello world here", "after": "Hello, everyone! I am here.",
 #  "category": "style", 
@@ -89,7 +110,7 @@ def main():
     
     your_option = st.selectbox(
         "Which Function you want to do?",
-        ('pnan', 'Rewriter', 'Translator', 'Auto-Corrector'),
+        ('pnan', 'Rewriter', 'Translator', 'Auto-Corrector', 'Summarizer'),
         index=None,
         placeholder="Select Function...",
     )
@@ -108,7 +129,7 @@ def main():
         st.write('You selected:', lang_option)
         your_option = prompt3.format(lang_option)
     elif your_option == 'Auto-Corrector': your_option = prompt4
-    
+    elif your_option == 'Summarizer': your_option = prompt5
     
     
     client = openai.OpenAI(api_key=my_api_key)
