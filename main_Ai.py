@@ -24,8 +24,8 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             - "comment" - a comment about the suggestion
             Don't say anything at first. Wait for the user to say something.
         """ 
-def prompt3(lang):
-    return f"""Act as an AI writing translater, and translate text to {lang}.
+def prompt3(lang_option):
+    return f"""Act as an AI writing translater, and translate text to {lang_option}.
             You must output 2 type of answer.
             1. You will translate the whole writing and output it as String 
             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
