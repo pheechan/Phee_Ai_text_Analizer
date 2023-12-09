@@ -19,6 +19,8 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             You must output 2 type 
             1. You will rewrite the whole writing and output it as String
             2. List the suggestions in a JSON array, one suggestion per line.
+            Then you must seperated those two type of answer, so it won't be confusing like this example : 
+            [ "the rewrite string", [Json Array]]
             Each suggestion should have 3 fields:
             - "before" - the text before the suggestion
             - "after" - the text after the suggestion
@@ -46,7 +48,6 @@ prompt4 = """Act as an AI writing analizer in English. You will receive a piece 
 # [ { "before": "Hello world here", "after": "Hello, everyone! I am here.",
 #  "category": "style", 
 # "comment": "Added a greeting and made the sentence more expressive." } ]
-# [ "answer from traslate the sentence" ,[ { "before": "Hello world here", "after": "Hello, everyone! I am here.", "category": "style"} ] ]
 
 def init():
     # Set up the streamlit app
@@ -56,7 +57,7 @@ def init():
     )
 
 # def analyze_and_rewrite(api_key, user_input):
-    
+
 
 def main():
     init()
