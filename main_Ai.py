@@ -32,7 +32,7 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             - "comment" - a comment about the suggestion
             Don't say anything at first. Wait for the user to say something.
         """ 
-prompt3 = """Act as an AI writing translater, and translate text to {}.
+prompt3 = """Act as an AI writing translater, and translate text to {}. The translation should be accurate and maintain the original meaning.
             You must output 2 type of answer.
             1. You will translate the whole writing and output it as String 
             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
@@ -47,12 +47,14 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
         """
 
 prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing and you should correct any spelling or grammatical errors.
+            The corrections should be accurate and not change the original meaning.
+            For example, if the original text is 'Hllo wold her', a possible correction might be 'Hello world here'.
             You must output 2 types of answers.
             1. You will correct the whole writing and output it as a String.
             2. Then you must list the words you corrected. List the corrected words in a JSON array, one word per line.
             Then you must separate those two types of answers, so it won't be confusing like this example : 
             [ "the corrected string", [Json Array]]
-            example Json array formatted: 
+            Json Array formatted: 
             [ { "Incorrect": "Hllo wold her", "Correct": "Hello world here.",
                 "Context": "When I first arrived, I said, 'Hello world here'." } ]
             Each corrected word should have 3 fields:
@@ -62,6 +64,9 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             Don't say anything at first. Wait for the user to say something.
         """
 prompt5 = """Act as an AI summarizer. You will receive a piece of writing and you should summarize it while maintaining the key points.
+            The summary should be concise and to the point.
+            For example, if the original text is 'Our journey through the diverse culinary landscapes of Southeast Asia, the Mediterranean, and South America has only scratched the surface of the world's gastronomic wonders. From street food stalls to elegant dining establishments, the global tapestry of flavors invites us to explore, savor, and appreciate the unique stories each dish tells. So, let your taste buds be your guide as you embark on a culinary adventure, discovering the extraordinary in the everyday delights of food.', 
+            a possible summary might be 'The world offers a wide range of culinary experiences, from Southeast Asia to South America, each telling a unique story through its flavors. Exploring these diverse gastronomic landscapes can lead to extraordinary discoveries.'
             You must output 2 types of answers.
             1. You will summarize the whole writing and output it as a String.
             2. Then you must list the key points you identified in the original text. List these key points in a JSON array, one point per line.
@@ -91,7 +96,7 @@ prompt5 = """Act as an AI summarizer. You will receive a piece of writing and yo
 def init():
     # Set up the streamlit app
     st.set_page_config(
-        page_title='AI Text Analyzer and Rewriter',
+        page_title='AI Text Analyzer',
         page_icon= '🤖'
     )
 
@@ -100,13 +105,13 @@ def init():
 
 def main():
     init()
-    st.header('AI Text Analyzer and Rewriter 🤖')
+    st.header('AI Text Analyzer 🤖')
     st.markdown('Input the writing that you want to check.')
 
     # Set up key
     my_api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
 
-    user_input = st.text_area("Enter the text to analyze and rewrite:", placeholder="Your text here...")
+    user_input = st.text_area("Enter the text to analyze:", placeholder="Your text here...")
     
     your_option = st.selectbox(
         "Which Function you want to do?",
@@ -122,7 +127,7 @@ def main():
     elif your_option == 'Translator': 
         lang_option = st.selectbox(
             "Which language do you want to translate to?",
-            ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish"),
+            ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish", "Thai"),
             index=None,
             placeholder="Select language...",
         )
