@@ -28,7 +28,7 @@ prompt2 = """Act as an AI writing analizer in German, French, Spanish. You will 
             Then you must find interesting vocabulary and store them in a list.
 
         """
-promt3 = """Act as an AI writing analizer in English. You will receive a piece of generated writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
+prompt3 = """Act as an AI writing analizer in English. You will receive a piece of generated writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
         """
 
 def init():
@@ -58,7 +58,7 @@ def main():
     )
     your_option = st.selectbox(
         "Which Function you want to do?",
-        ("prompt", "prompt1", "prompt2","prompt3"),
+        (prompt, prompt1, prompt2, prompt3),
         index=None,
         placeholder="Select Function...",
     )
