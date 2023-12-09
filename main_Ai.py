@@ -114,7 +114,7 @@ def main():
             st.markdown("10 interesting vocabularies")
             sd = sd[1]
         
-        sd = json.loads(sd)
+        sd = json.loads([sd])
         print (sd)
         suggestion_df = pd.DataFrame.from_dict(sd)
         print(suggestion_df)
