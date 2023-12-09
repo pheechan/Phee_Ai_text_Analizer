@@ -86,7 +86,7 @@ def main():
     
     your_option = st.selectbox(
         "Which Function you want to do?",
-        ('pnan', 'Rewriter', 'Translator', 'f4'),
+        ('pnan', 'Rewriter', 'Translator', 'Auto-Corrector'),
         index=None,
         placeholder="Select Function...",
     )
