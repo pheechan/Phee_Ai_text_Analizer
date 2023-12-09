@@ -92,8 +92,8 @@ def main():
             index=None,
             placeholder="Select language...",
         )
-        your_option = prompt3(lang_option)
         st.write('You selected:', lang_option)
+        your_option = prompt3(lang_option)
     elif your_option == 'f4': your_option = prompt4
     
     
