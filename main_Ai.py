@@ -112,7 +112,7 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             - "Incorrect" - the incorrect word before correction
             - "Correct" - the corrected word
             - "Context" - a sentence showing the word in context
-            - "Type" - the type of error 
+            - "Type" - the type of error, one of "Spelling", "Grammar", "Punctuation", "Typo", "Other", "Unknown",
             Don't say anything at first. Wait for the user to say something.
         """
 prompt5 = """Act as an AI summarizer. You will receive a piece of writing and you should summarize it while maintaining the key points.
