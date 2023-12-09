@@ -45,18 +45,19 @@ def main():
    index=None,
    placeholder="Select language...",
     )
-
+    client = openai.OpenAI(api_key=my_api_key)
     st.write('You selected:', option)
+    
     if st.button('Submit') and my_api_key:
-        client = openai.OpenAI(api_key=my_api_key)
-        submit_messages = [
+        messages_so_far = [
             {"role": "system", "content": prompt1},
             {'role': 'user', 'content': user_input},
         ]
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
-            messages=submit_messages
+            messages=messages_so_far
         )
+        # Show the response from the AI in a box
         st.markdown('**AI response:**')
         suggestion_answer = response.choices[0].message.content
         st.markdown(suggestion_answer)
