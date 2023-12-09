@@ -58,10 +58,16 @@ def main():
     )
     your_option = st.selectbox(
         "Which Function you want to do?",
-        (prompt, prompt1, prompt2, prompt3),
+        ('f1', 'f2', 'f3', 'f4'),
         index=None,
         placeholder="Select Function...",
     )
+
+    if your_option == 'f1': your_option = prompt
+    elif your_option == 'f2': your_option = prompt1
+    elif your_option == 'f3': your_option = prompt2
+    elif your_option == 'f4': your_option = prompt3
+    
     client = openai.OpenAI(api_key=my_api_key)
     st.write('You selected:', your_option)
     
