@@ -16,9 +16,9 @@ prompt1 = """Act as an AI writing tutor in English. You will receive a
 
 prompt2 = """Act as an AI writing analizer in English. You will receive a 
             piece of writing and you should make the writing more human-like, making it less-detectable that it was from ai, two factors are crucial, “perplexity” and “burstiness.” Perplexity measures the complexity of text. Separately, burstiness compares the variations of sentences. Humans tend to write with greater burstiness, for example, with some longer or complex sentences alongside shorter ones. AI sentences tend to be more uniform. Therefore, when writing the following content I am going to ask you to create, it need it to have a good amount of perplexity and burstiness.
-            You must output 2 type 
+            You must output 2 type of answer.
             1. You will rewrite the whole writing and output it as String
-            2. Then you must give suggestions on how to improve it and List the suggestions in a JSON array, one suggestion per line.
+            2. Then you must give suggestions on how to improve it. Say only the writing that you generated, List the suggestions in a JSON array, one suggestion per line.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
             [ "the rewrite string", [Json Array]]
             Each suggestion should have 3 fields:
