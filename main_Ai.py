@@ -45,7 +45,14 @@ def main():
     my_api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
 
     user_input = st.text_area("Enter the text to analyze and rewrite:", "Your text here")
+    option = st.selectbox(
+   "Which language do you want to translate to?",
+   ("German", "French", "Spanish"),
+   index=None,
+   placeholder="Select language...",
+    )
 
+    st.write('You selected:', option)
     if st.button('Submit') and my_api_key:
         answer_pandas = analyze_and_rewrite(my_api_key, user_input)
 
