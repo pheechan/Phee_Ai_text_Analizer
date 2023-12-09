@@ -56,11 +56,12 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             [ "the corrected string", [Json Array]]
             Json Array formatted: 
             [ { "Incorrect": "Hllo wold her", "Correct": "Hello world here.",
-                "Context": "When I first arrived, I said, 'Hello world here'." } ]
+                "Context": "When I first arrived, I said, 'Hello world here'.", "Type": "spelling" } ]
             Each corrected word should have 3 fields:
             - "Incorrect" - the incorrect word before correction
             - "Correct" - the corrected word
             - "Context" - a sentence showing the word in context
+            - "Type" - the type of error, one of "spelling", "grammar", "other"
             Don't say anything at first. Wait for the user to say something.
         """
 prompt5 = """Act as an AI summarizer. You will receive a piece of writing and you should summarize it while maintaining the key points.
