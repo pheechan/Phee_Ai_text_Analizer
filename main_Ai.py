@@ -67,7 +67,7 @@ def main():
     
     if st.button('Submit') and my_api_key:
         messages_so_far = [
-            {"role": "system", "content": prompt},
+            {"role": "system", "content": your_option},
             {'role': 'user', 'content': user_input},
         ]
         response = client.chat.completions.create(
