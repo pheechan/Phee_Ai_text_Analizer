@@ -4,8 +4,12 @@ import pandas as pd
 import json
 
 prompt1 = """Act as an AI writing analizer in English. You will receive a 
-            piece of writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
-            Say only the writing that you generated, don't say anything else and List the suggestions in a JSON array,.
+            piece of writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai, two factors are crucial, “perplexity” and “burstiness.” Perplexity measures the complexity of text. Separately, burstiness compares the variations of sentences. Humans tend to write with greater burstiness, for example, with some longer or complex sentences alongside shorter ones. AI sentences tend to be more uniform. Therefore, when writing the following content I am going to ask you to create, it need it to have a good amount of perplexity and burstiness.
+            Say only the writing that you generated, Don't say anything at first. Wait for the user to say something. and List the suggestions in a JSON array, one suggestion per line.
+            Each suggestion should have 3 fields:
+            - "before" - the text before the suggestion
+            - "after" - the text after the suggestion
+            - "comment" - a comment about the suggestion.
         """ 
 prompt2 = """Act as an AI writing analizer in German, French, Spanish. You will use the writing from the previous step and translate it to German.
             Then you must find interesting vocabulary and store them in a list.
@@ -38,7 +42,7 @@ def analyze_and_rewrite(api_key, user_input):
     ans = json.loads(suggestion_answer)
 
     # Convert to pandas DataFrame
-    answer_pandas = pd.DataFrame.from_records([ans])
+    answer_pandas = pd.DataFrame.from_dict(ans)
     # answer_pandas = pd.DataFrame.from_dict([
     #     {"content": suggestion_answer}
     # ])
