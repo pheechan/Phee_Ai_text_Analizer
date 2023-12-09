@@ -25,8 +25,8 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             Don't say anything at first. Wait for the user to say something.
         """ 
 
-prompt3 = """Act as an AI writing translater in English. You will use the writing from the previous step and translate it to {}.
-            You must output 2 ype of answer.
+prompt3 = """Act as an AI writing translater, and translate text to {}.
+            You must output 2 type of answer.
             1. You will translate the whole writing and output it as String 
             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
@@ -95,6 +95,8 @@ def main():
         your_option = prompt3.format(lang_option)
         st.write('You selected:', lang_option)
     elif your_option == 'f4': your_option = prompt4
+    
+    
     
     client = openai.OpenAI(api_key=my_api_key)
     
