@@ -21,6 +21,10 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             2. Then you must give suggestions on how to improve it. Say only the writing that you generated, List the suggestions in a JSON array, one suggestion per line.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
             [ "the rewrite string", [Json Array]]
+            ex formatted: 
+            [ { "before": "Hello world here", "after": "Hello, everyone! I am here.",
+                "category": "style", 
+                 "comment": "Added a greeting and made the sentence more expressive." } ]
             Each suggestion should have 3 fields:
             - "before" - the text before the suggestion
             - "after" - the text after the suggestion
