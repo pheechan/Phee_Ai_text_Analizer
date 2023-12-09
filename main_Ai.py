@@ -3,7 +3,7 @@ import openai
 import pandas as pd
 import json
 
-prompt = """Act as an AI writing tutor in English. You will receive a 
+prompt1 = """Act as an AI writing tutor in English. You will receive a 
             piece of writing and you should give suggestions on how to improve it.
             List the suggestions in a JSON array, one suggestion per line.
             Each suggestion should have 3 fields:
@@ -14,7 +14,7 @@ prompt = """Act as an AI writing tutor in English. You will receive a
             Don't say anything at first. Wait for the user to say something.
         """
 
-prompt1 = """Act as an AI writing analizer in English. You will receive a 
+prompt2 = """Act as an AI writing analizer in English. You will receive a 
             piece of writing from Ai and you will rewrite and make the writing more human-like, making it less-detectable that it was from ai, two factors are crucial, “perplexity” and “burstiness.” Perplexity measures the complexity of text. Separately, burstiness compares the variations of sentences. Humans tend to write with greater burstiness, for example, with some longer or complex sentences alongside shorter ones. AI sentences tend to be more uniform. Therefore, when writing the following content I am going to ask you to create, it need it to have a good amount of perplexity and burstiness.
             Say only the writing that you generated, List the suggestions in a JSON array, one suggestion per line.
             Each suggestion should have 3 fields:
@@ -24,12 +24,24 @@ prompt1 = """Act as an AI writing analizer in English. You will receive a
             - "comment" - a comment about the suggestion
             Don't say anything at first. Wait for the user to say something.
         """ 
-prompt2 = """Act as an AI writing analizer in German, French, Spanish. You will use the writing from the previous step and translate it to German.
-            Then you must find interesting vocabulary and store them in a list.
+prompt3 = """Act as an AI writing translater in English. You will use the writing from the previous step and translate it to {}.
+            You must output 2 ype of answer 1. You will translate the whole writing and output it as String 2. Then you must find interesting vocabulary. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
+            Then you must seperated those two type of answer, so it won't be confusing.
+            Each vocabulary should have 3 fields:
+            - "Vocabulary" - the text of the vocabulary
+            - "Translation" - the translation of the vocabulary
+            - "Example" - an example sentence of the vocabulary
+            Don't say anything at first. Wait for the user to say something.
+        """
 
+prompt4 = """Act as an AI writing analizer in English. You will receive a piece of generated writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
         """
-prompt3 = """Act as an AI writing analizer in English. You will receive a piece of generated writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
-        """
+
+# ex formatted: 
+# [ { "before": "Hello world here", "after": "Hello, everyone! I am here.",
+#  "category": "style", 
+# "comment": "Added a greeting and made the sentence more expressive." } ]
+
 
 def init():
     # Set up the streamlit app
@@ -50,26 +62,30 @@ def main():
     my_api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
 
     user_input = st.text_area("Enter the text to analyze and rewrite:", placeholder="Your text here...")
-    option = st.selectbox(
-        "Which language do you want to translate to?",
-        ("German", "French", "Spanish"),
-        index=None,
-        placeholder="Select language...",
-    )
+    
     your_option = st.selectbox(
         "Which Function you want to do?",
-        ('f1', 'f2', 'f3', 'f4'),
+        ('pnan', 'Rewriter', 'Translater', 'f4'),
         index=None,
         placeholder="Select Function...",
     )
+    st.write('You selected:', your_option)
 
-    if your_option == 'f1': your_option = prompt
-    elif your_option == 'f2': your_option = prompt1
-    elif your_option == 'f3': your_option = prompt2
-    elif your_option == 'f4': your_option = prompt3
+    #Function Selected
+    if your_option == 'pnan': your_option = prompt1
+    elif your_option == 'Rewriter': your_option = prompt2
+    elif your_option == 'Translater': 
+        lang_option = st.selectbox(
+            "Which language do you want to translate to?",
+            ("German", "French", "Spanish"),
+            index=None,
+            placeholder="Select language...",
+        )
+        your_option = prompt3.format(lang_option)
+        st.write('You selected:', lang_option)
+    elif your_option == 'f4': your_option = prompt4
     
     client = openai.OpenAI(api_key=my_api_key)
-    st.write('You selected:', your_option)
     
     if st.button('Submit') and my_api_key:
         messages_so_far = [
