@@ -32,6 +32,7 @@ def analyze_and_rewrite(api_key, user_input):
         messages=submit_messages
     )
     suggestion_answer = response.choices[0].message.content
+    print(f"suggestion_answer: {suggestion_answer}")
     ans = json.loads(suggestion_answer)
 
     # Convert to pandas DataFrame
