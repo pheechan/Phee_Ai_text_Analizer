@@ -31,15 +31,14 @@ def analyze_and_rewrite(api_key, user_input):
         messages=submit_messages
     )
     suggestion_answer = response.choices[0].message.content
-    ans = json.loads(suggestion_answer)
-    print(ans)
+    # ans = json.loads(suggestion_answer)
+    # print(ans)
 
-    print(suggestion_answer)
-    # ANS = [{"role" : msg["role"], "content" : msg["content"]} for msg in json.loads(suggestion_answer)["messages"]]
-    # # Convert to pandas format
-    answer_pandas = pd.DataFrame.from_dict(ans)
+    # print(suggestion_answer)
+    # answer_pandas = pd.DataFrame.from_dict(ans)
+    # return answer_pandas
+    answer_pandas = pd.DataFrame.from_dict({"role": ["system", "user"], "content": [prompt1, user_input]})
     return answer_pandas
-
 
 def main():
     init()
