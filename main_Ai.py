@@ -31,8 +31,11 @@ def analyze_and_rewrite(api_key, user_input):
         model="gpt-3.5-turbo",
         messages=submit_messages
     )
+    st.markdown('**AI response:**')
     suggestion_answer = response.choices[0].message.content
     print(f"suggestion_answer: {suggestion_answer}")
+    st.markdown(suggestion_answer)
+    st.markdown("DEBUG")
     ans = json.loads(suggestion_answer)
 
     # Convert to pandas DataFrame
@@ -61,7 +64,6 @@ def main():
     if st.button('Submit') and my_api_key:
         answer_pandas = analyze_and_rewrite(my_api_key, user_input)
 
-        st.markdown('**AI response:**')
         print(answer_pandas)
         st.table(answer_pandas)
 
