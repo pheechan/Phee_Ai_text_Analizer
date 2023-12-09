@@ -51,13 +51,19 @@ def main():
 
     user_input = st.text_area("Enter the text to analyze and rewrite:", placeholder="Your text here...")
     option = st.selectbox(
-   "Which language do you want to translate to?",
-   ("German", "French", "Spanish"),
-   index=None,
-   placeholder="Select language...",
+        "Which language do you want to translate to?",
+        ("German", "French", "Spanish"),
+        index=None,
+        placeholder="Select language...",
+    )
+    your_option = st.selectbox(
+        "Which Function you want to do?",
+        ("prompt", "prompt1", "prompt2","prompt3"),
+        index=None,
+        placeholder="Select Function...",
     )
     client = openai.OpenAI(api_key=my_api_key)
-    st.write('You selected:', option)
+    st.write('You selected:', your_option)
     
     if st.button('Submit') and my_api_key:
         messages_so_far = [
@@ -87,47 +93,3 @@ if __name__ == "__main__":
 
 
 ### Our journey through the diverse culinary landscapes of Southeast Asia, the Mediterranean, and South America has only scratched the surface of the world's gastronomic wonders. From street food stalls to elegant dining establishments, the global tapestry of flavors invites us to explore, savor, and appreciate the unique stories each dish tells. So, let your taste buds be your guide as you embark on a culinary adventure, discovering the extraordinary in the everyday delights of food.
-
-
-
-# import streamlit as st
-# import openai
-# import json
-# import pandas as pd
-
-# Get the API key from the sidebar called OpenAI API key
-# user_api_key = st.sidebar.text_input("OpenAI API key", type="password")
-
-# client = openai.OpenAI(api_key=user_api_key)
-    
-
-
-# st.title('Writing tutor')
-# st.markdown('Input the writing that you want to improve. \n\
-#             The AI will give you suggestions on how to improve it.')
-
-# user_input = st.text_area("Enter some text to correct:", "Your text here")
-
-
-# # submit button after text input
-# if st.button('Submit'):
-#     messages_so_far = [
-#         {"role": "system", "content": prompt},
-#         {'role': 'user', 'content': user_input},
-#     ]
-#     response = client.chat.completions.create(
-#         model="gpt-3.5-turbo",
-#         messages=messages_so_far
-#     )
-#     # Show the response from the AI in a box
-#     st.markdown('**AI response:**')
-#     suggestion_answer = response.choices[0].message.content
-#     st.markdown(suggestion_answer)
-
-
-#     sd = json.loads(suggestion_answer)
-
-#     print (sd)
-#     suggestion_df = pd.DataFrame.from_dict(sd)
-#     print(suggestion_df)
-#     st.table(suggestion_df)
