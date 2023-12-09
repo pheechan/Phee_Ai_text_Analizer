@@ -108,15 +108,15 @@ def main():
         st.markdown(suggestion_answer)
 
 
-        sd = json.loads(suggestion_answer)
         
         if your_option == 'Translater':
             st.markdown(sd[0])
             st.markdown("10 interesting vocabularies")
             sd = sd[1]
         
+        sd = json.loads(sd)
         print (sd)
-        suggestion_df = pd.DataFrame.from_dict([sd])
+        suggestion_df = pd.DataFrame.from_dict(sd)
         print(suggestion_df)
         st.table(suggestion_df)
 
