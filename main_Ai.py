@@ -112,10 +112,10 @@ def main():
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
         suggestion_answer = response.choices[0].message.content
-        st.markdown(suggestion_answer[0])
+        st.markdown(suggestion_answer)
 
 
-        sd = json.loads(suggestion_answer[1])
+        sd = json.loads(suggestion_answer)
 
         st.markdown("10 interesting vocabularies")
         print (sd)
