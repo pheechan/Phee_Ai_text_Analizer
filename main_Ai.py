@@ -116,7 +116,7 @@ def main():
             sd = sd[1]
         
         print (sd)
-        suggestion_df = pd.DataFrame.from_dict(sd)
+        suggestion_df = pd.DataFrame.from_dict([sd])
         print(suggestion_df)
         st.table(suggestion_df)
 
