@@ -24,9 +24,19 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             - "comment" - a comment about the suggestion
             Don't say anything at first. Wait for the user to say something.
         """ 
+
 prompt3 = """Act as an AI writing translater in English. You will use the writing from the previous step and translate it to {}.
-            You must output 2 ype of answer 1. You will translate the whole writing and output it as String 2. Then you must find interesting vocabulary. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
-            Then you must seperated those two type of answer, so it won't be confusing.
+            You must output 2 ype of answer.
+            1. You will translate the whole writing and output it as String 
+            2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
+            Then you must seperated those two type of answer, so it won't be confusing like this example : 
+            [ "Hello world", [
+                {
+                "vocabulary": "Hello",
+                "Translation": "Hallo",
+                "Example": "Hallo Ich bin John"
+                }
+            ]]
             Each vocabulary should have 3 fields:
             - "Vocabulary" - the text of the vocabulary
             - "Translation" - the translation of the vocabulary
@@ -42,6 +52,7 @@ prompt4 = """Act as an AI writing analizer in English. You will receive a piece 
 #  "category": "style", 
 # "comment": "Added a greeting and made the sentence more expressive." } ]
 
+# [ "answer from traslate the sentence" ,[ { "before": "Hello world here", "after": "Hello, everyone! I am here.", "category": "style"} ] ]
 
 def init():
     # Set up the streamlit app
@@ -99,11 +110,12 @@ def main():
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
         suggestion_answer = response.choices[0].message.content
-        st.markdown(suggestion_answer)
+        st.markdown(suggestion_answer[0])
 
 
-        sd = json.loads(suggestion_answer)
+        sd = json.loads(suggestion_answer[1])
 
+        st.markdown("10 interesting vocabularies")
         print (sd)
         suggestion_df = pd.DataFrame.from_dict(sd)
         print(suggestion_df)
