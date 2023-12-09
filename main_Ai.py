@@ -116,7 +116,11 @@ def main():
 
 
         sd = json.loads(suggestion_answer)
-
+        
+        if your_option == 'Translater':
+            sd = sd[1]
+            st.markdown(sd[0])
+        
         st.markdown("10 interesting vocabularies")
         print (sd)
         suggestion_df = pd.DataFrame.from_dict(sd)
