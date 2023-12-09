@@ -11,7 +11,8 @@ prompt2 = """Act as an AI writing analizer in German, French, Spanish. You will 
             Then you must find interesting vocabulary and store them in a list.
 
         """
-
+promt3 = """Act as an AI writing analizer in English. You will receive a piece of generated writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
+        """
 
 def init():
     # Set up the streamlit app
@@ -31,14 +32,13 @@ def analyze_and_rewrite(api_key, user_input):
         messages=submit_messages
     )
     suggestion_answer = response.choices[0].message.content
-    # ans = json.loads(suggestion_answer)
-    # print(ans)
+    ans = json.loads(suggestion_answer)
 
-    # print(suggestion_answer)
-    # answer_pandas = pd.DataFrame.from_dict(ans)
-    # return answer_pandas
-    answer_pandas = pd.DataFrame.from_dict({"role": ["system", "user"], "content": [prompt1, user_input]})
+    # Convert to pandas DataFrame
+    answer_pandas = pd.DataFrame.from_records([ans])
     return answer_pandas
+    # answer_pandas = pd.DataFrame.from_dict({"role": ["system", "user"], "content": [prompt1, user_input]})
+    # return answer_pandas
 
 def main():
     init()
