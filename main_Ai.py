@@ -40,12 +40,23 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             [ "the translate string", [Json Array]]
             Each vocabulary should have 3 fields:
             - "Vocabulary" - the text of the vocabulary
+            - "Part of Speech" - the part of speech of the vocabulary
             - "Translation" - the translation of the vocabulary
             - "Example" - an example sentence of the vocabulary
             Don't say anything at first. Wait for the user to say something.
         """
 
-prompt4 = """Act as an AI writing analizer in English. You will receive a piece of generated writing from Ai and you will rewrite and improve the writing and make the writing more human-like making it less-detectable that it was from ai.
+prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing and you should correct any spelling or grammatical errors.
+            You must output 2 types of answers.
+            1. You will correct the whole writing and output it as a String.
+            2. Then you must list the words you corrected. List the corrected words in a JSON array, one word per line.
+            Then you must separate those two types of answers, so it won't be confusing like this example : 
+            [ "the corrected string", [Json Array]]
+            Each corrected word should have 3 fields:
+            - "Incorrect" - the incorrect word before correction
+            - "Correct" - the corrected word
+            - "Context" - a sentence showing the word in context
+            Don't say anything at first. Wait for the user to say something.
         """
 
 # ex formatted: 
@@ -87,13 +98,13 @@ def main():
     elif your_option == 'Translator': 
         lang_option = st.selectbox(
             "Which language do you want to translate to?",
-            ("German", "French", "Spanish"),
+            ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish"),
             index=None,
             placeholder="Select language...",
         )
         st.write('You selected:', lang_option)
         your_option = prompt3.format(lang_option)
-    elif your_option == 'f4': your_option = prompt4
+    elif your_option == 'Auto-Corrector': your_option = prompt4
     
     
     
