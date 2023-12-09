@@ -39,10 +39,10 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
             [ "the translate string", [Json Array]]
             Each vocabulary should have 3 fields:
-            - "Vocabulary" - the text of the vocabulary
+            - "Vocabulary" - the text of the vocabulary in the language you just translate to.
             - "Part of Speech" - the part of speech of the vocabulary
             - "Translation" - the translation of the vocabulary
-            - "Example" - an example sentence of the vocabulary
+            - "Example" - an example sentence of the vocabulary in the language you just translate to.
             Don't say anything at first. Wait for the user to say something.
         """
 
@@ -52,6 +52,9 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             2. Then you must list the words you corrected. List the corrected words in a JSON array, one word per line.
             Then you must separate those two types of answers, so it won't be confusing like this example : 
             [ "the corrected string", [Json Array]]
+            example formatted: 
+            [ { "Incorrect": "Hllo wold her", "Correct": "Hello world here.",
+                "Context": "When I first arrived, I said, 'Hello world here'." } ]
             Each corrected word should have 3 fields:
             - "Incorrect" - the incorrect word before correction
             - "Correct" - the corrected word
