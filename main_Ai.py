@@ -31,8 +31,12 @@ def analyze_and_rewrite(api_key, user_input):
         messages=submit_messages
     )
     suggestion_answer = response.choices[0].message.content
-    ans = json.loads(suggestion_answer)
-    answer_pandas = pd.DataFrame.from_dict(ans)
+    # ans = json.loads(suggestion_answer)
+    # print(ans)
+    
+    ANS = [{"role" : msg["role"], "content" : msg["content"]} for msg in json.loads(suggestion_answer)["messages"]]
+    # Convert to pandas format
+    answer_pandas = pd.DataFrame(ANS)
     return answer_pandas
 
 
@@ -44,7 +48,7 @@ def main():
     # Set up key
     my_api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
 
-    user_input = st.text_area("Enter the text to analyze and rewrite:", "Your text here")
+    user_input = st.text_area("Enter the text to analyze and rewrite:", placeholder="Your text here...")
     option = st.selectbox(
    "Which language do you want to translate to?",
    ("German", "French", "Spanish"),
@@ -57,6 +61,7 @@ def main():
         answer_pandas = analyze_and_rewrite(my_api_key, user_input)
 
         st.markdown('**AI response:**')
+        print(answer_pandas)
         st.table(answer_pandas)
 
 if __name__ == "__main__":
