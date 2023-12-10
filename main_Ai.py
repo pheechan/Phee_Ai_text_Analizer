@@ -2,18 +2,8 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
-from Prompts_text import prompt2, prompt3, prompt4, prompt5
+from Prompts_text import prompt1, prompt2, prompt3, prompt4, prompt5
 
-prompt1 = """Act as an AI writing tutor in English. You will receive a 
-            piece of writing and you should give suggestions on how to improve it.
-            List the suggestions in a JSON array, one suggestion per line.
-            Each suggestion should have 3 fields:
-            - "before" - the text before the suggestion
-            - "after" - the text after the suggestion
-            - "category" - the category of the suggestion one of "grammar", "style", "word choice", "other"
-            - "comment" - a comment about the suggestion
-            Don't say anything at first. Wait for the user to say something.
-        """
 def init():
     # Set up the streamlit app
     st.set_page_config(
@@ -41,6 +31,7 @@ def main():
     st.write('You selected:', your_option)
 
     #Function Selected
+    check = False
     if your_option == 'pnan': your_option = prompt1
     elif your_option == 'Rewriter': your_option = prompt2
     elif your_option == 'Translator': 
@@ -50,12 +41,12 @@ def main():
             index=None,
             placeholder="Select language...",
         )
+        check = True
         st.write('You selected:', lang_option)
         your_option = prompt3.format(lang_option)
     elif your_option == 'Auto-Corrector': your_option = prompt4
     elif your_option == 'Summarizer': your_option = prompt5
     
-    # Use the openai module directly, not OpenAI class
     openai.api_key = my_api_key
     
     if st.button('Submit') and my_api_key:
@@ -75,12 +66,13 @@ def main():
         st.markdown("--------------------------------")
 
         
-        if your_option == 'Translater':
-            st.markdown(sd[0])
+        if check or your_option == prompt2:
+            st.markdown(suggestion_answer[0])
             st.markdown("10 interesting vocabularies")
-            sd = sd[1]
+            suggestion_answer = suggestion_answer[1]
         
-        sd = json.loads(sd)
+
+        sd = json.loads(suggestion_answer)
         print (sd)
         suggestion_df = pd.DataFrame.from_dict(sd)
         print(suggestion_df)
