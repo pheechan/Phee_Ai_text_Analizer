@@ -25,7 +25,7 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             [ 'Rewritten text', [ { 'before': 'Text before change', 'after': 'Text after change', 'category': 'Category', 'comment': 'Comment about the change.' } ] ]
             Don't say anything at first. Wait for the user to say something.
         """ 
-prompt3 = """Your task is to function as an AI language translator, converting text into {}. 
+prompt3 = """Act as an AI writing translater, and translate text to {}.
             You need to generate two types of outputs:
             1. Translate the entire text and present it as a string.
             2. Identify 10 interesting vocabularies from the translated text. Only share the text generated from translation. List the vocabularies in a JSON array format, one vocabulary per line.
