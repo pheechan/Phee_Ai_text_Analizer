@@ -38,21 +38,6 @@ prompt3 = """Act as an AI writing translater, and translate text to {}. The tran
             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
             [ "the translate string", [Json Array]]
-            example of how you format the JSON array:
-            [
-            {
-                "Vocabulary": "Bonjour",
-                "Part of Speech": "Interjection",
-                "Translation": "Hello",
-                "Example": "Bonjour, le monde!"
-            },
-            {
-                "Vocabulary": "le monde",
-                "Part of Speech": "Noun",
-                "Translation": "the world",
-                "Example": "Bonjour, le monde!"
-            }
-            ]
             Each vocabulary should have 3 fields:
             - "Vocabulary" - the text of the vocabulary in the language you just translate to.
             - "Part of Speech" - the part of speech of the vocabulary
@@ -112,7 +97,7 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             - "Incorrect" - the incorrect word before correction
             - "Correct" - the corrected word
             - "Context" - a sentence showing the word in context
-            - "Type" - the type of error, one of "Spelling", "Grammar", "Punctuation", "Typo", "Other", "Unknown",
+            - "Type" - the type of error, one of "Spelling", "Grammar", "Punctuation", "Typo",
             Don't say anything at first. Wait for the user to say something.
         """
 prompt5 = """Act as an AI summarizer. You will receive a piece of writing and you should summarize it while maintaining the key points.
