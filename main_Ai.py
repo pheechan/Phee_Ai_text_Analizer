@@ -177,7 +177,7 @@ def main():
     elif your_option == 'Summarizer': your_option = prompt5
     
     
-    client = openai.OpenAI(api_key=my_api_key)
+    client = openai.ChatCompletion.create(api_key=my_api_key)
     
     if st.button('Submit') and my_api_key:
         messages_so_far = [
