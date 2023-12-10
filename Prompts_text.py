@@ -39,16 +39,16 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
                 'Translated text',
                 [
                     {{
-                        'Vocabulary': 'Vocabulary',
-                        'Part of Speech': 'Part of Speech',
-                        'Translation': 'Translation',
-                        'Example': 'Example'
+                        'Vocabulary': 'Vocabulary1',
+                        'Part of Speech': 'Part of Speech1',
+                        'Translation': 'Translation1',
+                        'Example': 'Example1'
                     }},
                     {{
-                        'Vocabulary': 'Vocabulary',
-                        'Part of Speech': 'Part of Speech',
-                        'Translation': 'Translation',
-                        'Example': 'Example'
+                        'Vocabulary': 'Vocabulary2',
+                        'Part of Speech': 'Part of Speech2',
+                        'Translation': 'Translation2',
+                        'Example': 'Example2'
                     }}
                 ]
             ]
