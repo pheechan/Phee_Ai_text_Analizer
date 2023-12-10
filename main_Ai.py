@@ -54,7 +54,6 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             2. Then you must list the words you corrected. List the corrected words in a JSON array, one word per line.
             Then you must separate those two types of answers, so it won't be confusing like this example : 
             [ "the corrected string", [Json Array]]
-            [ "the corrected string", [Json Array]]
             example of how you format the JSON array:
             [
             {
