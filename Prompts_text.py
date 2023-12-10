@@ -9,22 +9,21 @@ prompt1 = """Act as an AI writing tutor in English. You will receive a
             Don't say anything at first. Wait for the user to say something.
         """
 
-prompt2 = """Act as an AI writing analizer in English. You will receive a 
-            piece of writing and you should make the writing more human-like, making it less-detectable that it was from ai, two factors are crucial, “perplexity” and “burstiness.” Perplexity measures the complexity of text. Separately, burstiness compares the variations of sentences. Humans tend to write with greater burstiness, for example, with some longer or complex sentences alongside shorter ones. AI sentences tend to be more uniform. Therefore, when writing the following content I am going to ask you to create, it need it to have a good amount of perplexity and burstiness.
-            I need two types of output:
+prompt2 = """Act as an AI writing analyzer in English. You will receive a piece of writing and your task is to:
 
             1. Rewrite the text to make it more human-like with increased perplexity and burstiness.
 
             2. Provide suggestions on how to enhance the text, listing each suggestion in a JSON array format with the fields:
+            - 'before': The text before the suggested change.
+            - 'after': The text after implementing the suggestion.
+            - 'category': The category of the suggestion (e.g., 'grammar', 'style', 'word choice', 'other').
+            - 'comment': A comment or explanation about the suggested change.
 
-            'before': The text before the suggested change.
-            'after': The text after implementing the suggestion.
-            'category': The category of the suggestion (e.g., 'grammar', 'style', 'word choice', 'other').
-            'comment': A comment or explanation about the suggested change.
             Format the output as follows:
             [ 'Rewritten text', [ { 'before': 'Text before change', 'after': 'Text after change', 'category': 'Category', 'comment': 'Comment about the change.' } ] ]
+
             Don't say anything at first. Wait for the user to say something.
-        """ 
+            """
 prompt3 = """Act as an AI writing translater, and translate text to {}.
             I need two types of output:
             1. Translate the entire text and present it as a string.
