@@ -33,9 +33,9 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             "Part of Speech" : the part of speech of the vocabulary
             "Translation" : the translation of the vocabulary
             "Example" : an example sentence of the vocabulary in the language you just translate to.
-            Format the output as SAME as follows and I literally mean the SAME:
+            Format the output as follows:
             [
-                'Translated text',
+                'Translated text placeholder',
                 [
                     {{
                         'Vocabulary': 'Vocabulary1',
@@ -53,6 +53,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             ]
             Don't say anything at first. Wait for the user to say something.
         """
+
 
 
 prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing and you should correct any spelling or grammatical errors.
