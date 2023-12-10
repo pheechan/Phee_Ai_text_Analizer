@@ -35,7 +35,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             "Translation" : the translation of the vocabulary
             "Example" : an example sentence of the vocabulary in the language you just translate to.
             Format the output as follows:
-            [ 'Translated text', [ { 'Vocabulary': 'Vocabulary', 'Part of Speech': 'Part of Speech', 'Translation': 'Translation', 'Example': 'Example' } ] ]
+            [ 'Translated text', [ {{ 'Vocabulary': 'Vocabulary', 'Part of Speech': 'Part of Speech', 'Translation': 'Translation', 'Example': 'Example' }}, {{ 'Vocabulary': 'Vocabulary', 'Part of Speech': 'Part of Speech', 'Translation': 'Translation', 'Example': 'Example' }} ] ]
             Don't say anything at first. Wait for the user to say something.
 
              
