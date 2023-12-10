@@ -25,18 +25,23 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             [ 'Rewritten text', [ { 'before': 'Text before change', 'after': 'Text after change', 'category': 'Category', 'comment': 'Comment about the change.' } ] ]
             Don't say anything at first. Wait for the user to say something.
         """ 
-prompt3 = """Act as an AI writing translater, and translate text to {}.
-            You must output 2 type of answer.
-            1. You will translate the whole writing and output it as String 
-            2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
-            Then you must seperated those two type of answer, so it won't be confusing like this example : 
-            [ "the translate string", [Json Array]]
-            Each vocabulary should have 4 fields:
-            - "Vocabulary" - the text of the vocabulary in the language you just translate to.
-            - "Part of Speech" - the part of speech of the vocabulary
-            - "Translation" - the translation of the vocabulary
-            - "Example" - an example sentence of the vocabulary in the language you just translate to.
-            Don't say anything at first. Wait for the user to say something.
+prompt3 = """Your task is to function as an AI language translator, converting text into {}. 
+            You need to generate two types of outputs:
+            1. Translate the entire text and present it as a string.
+            2. Identify 10 interesting vocabularies from the translated text. Only share the text generated from translation. List the vocabularies in a JSON array format, one vocabulary per line.
+            Ensure a clear separation between these two types of outputs in this format:
+            [ 'Translated text', [
+            { 'Vocabulary': 'Word', 'Part of Speech': 'Part of speech', 'Translation': 'Translation', 'Example': 'Example sentence' },
+            { 'Vocabulary': 'Word', 'Part of Speech': 'Part of speech', 'Translation': 'Translation', 'Example': 'Example sentence' }
+            ]]
+
+            Each vocabulary should contain four fields:
+
+            'Vocabulary': The translated word.
+            'Part of Speech': The part of speech of the translated word.
+            'Translation': The translation of the word.
+            'Example': An example sentence in the translated language using the word.
+            Please refrain from any initial comments or inputs. Kindly await user instructions.
         """
 
 prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing and you should correct any spelling or grammatical errors.
