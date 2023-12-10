@@ -38,21 +38,6 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
             [ "the translate string", [Json Array]]
-            example of how you format the JSON array:
-            [
-            {
-                "Vocabulary": "Bonjour",
-                "Part of Speech": "Interjection",
-                "Translation": "Hello",
-                "Example": "Bonjour, le monde!"
-            },
-            {
-                "Vocabulary": "le monde",
-                "Part of Speech": "Noun",
-                "Translation": "the world",
-                "Example": "Bonjour, le monde!"
-            }
-            ]
             Each vocabulary should have 3 fields:
             - "Vocabulary" - the text of the vocabulary in the language you just translate to.
             - "Part of Speech" - the part of speech of the vocabulary
