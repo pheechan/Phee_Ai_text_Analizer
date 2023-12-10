@@ -32,8 +32,7 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             - "comment" - a comment about the suggestion
             Don't say anything at first. Wait for the user to say something.
         """ 
-prompt3 = """Act as an AI writing translater, and translate text to {}. The translation should be accurate and maintain the original meaning.
-            You must output 2 type of answer.
+prompt3 = """Act as an AI writing translater, and translate text to {}.
             1. You will translate the whole writing and output it as String 
             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
