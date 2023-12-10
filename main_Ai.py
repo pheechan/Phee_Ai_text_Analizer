@@ -2,6 +2,7 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
+from openai import OpenAI
 
 prompt1 = """Act as an AI writing tutor in English. You will receive a 
             piece of writing and you should give suggestions on how to improve it.
@@ -139,6 +140,7 @@ def init():
 
 # def analyze_and_rewrite(api_key, user_input):
 
+# pip install --upgrade openai
 
 def main():
     init()
@@ -174,7 +176,7 @@ def main():
     elif your_option == 'Summarizer': your_option = prompt5
     
     
-    client = openai.OpenAI(api_key=my_api_key)
+    client = OpenAI(api_key=my_api_key)
     
     if st.button('Submit') and my_api_key:
         messages_so_far = [
