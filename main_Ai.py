@@ -61,22 +61,27 @@ def main():
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
         suggestion_answer = response.choices[0].message.content
+        #Debugging
         st.markdown("DEBUG answer:")
         st.markdown(suggestion_answer)
+        
         st.markdown("--------------------------------")
-
+        if suggestion_answer[0] != '[':
+            st.markdown("Sorry, Please Submit again.")
+        else : 
+            sd = json.loads(suggestion_answer)
         
-        if check or your_option == prompt2:
-            st.markdown(suggestion_answer[0])
-            st.markdown("10 interesting vocabularies")
-            suggestion_answer = suggestion_answer[1]
-        
+            if check or your_option == prompt2:
+                original_answer = sd[0]
+                st.markdown(original_answer)
+                if check : st.markdown("10 interesting vocabularies")
+                sd = sd[1]
+            
 
-        sd = json.loads(suggestion_answer)
-        print (sd)
-        suggestion_df = pd.DataFrame.from_dict(sd)
-        print(suggestion_df)
-        st.table(suggestion_df)
+            print (sd)
+            suggestion_df = pd.DataFrame.from_dict(sd)
+            print(suggestion_df)
+            st.table(suggestion_df)
 
 if __name__ == "__main__":
     main()

@@ -13,13 +13,11 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
             piece of writing and you should make the writing more human-like, making it less-detectable that it was from ai, two factors are crucial, “perplexity” and “burstiness.” Perplexity measures the complexity of text. Separately, burstiness compares the variations of sentences. Humans tend to write with greater burstiness, for example, with some longer or complex sentences alongside shorter ones. AI sentences tend to be more uniform. Therefore, when writing the following content I am going to ask you to create, it need it to have a good amount of perplexity and burstiness.
             You must output 2 type of answer.
             1. You will rewrite the whole writing and output it as String
-            2. Then you must give suggestions on how to improve it. Say only the writing that you generated, List the suggestions in a JSON array, one suggestion per line.
-            Then you must seperated those two type of answer, so it won't be confusing like this example : 
+            2. Then you must give suggestions on how to improve it. List the suggestions in a JSON array, one suggestion per line.
+            Then you must seperated those two type of answer like this example : 
             [ "the rewrite string", [Json Array]]
             ex formatted: 
-            [ { "before": "Hello world here", "after": "Hello, everyone! I am here.",
-                "category": "style", 
-                 "comment": "Added a greeting and made the sentence more expressive." } ]
+            [ "Hello, world!", [ { "before": "Hello world", "after": "Hello, world", "category": "grammar", "comment": "Add a comma after 'Hello' to separate it from 'world'." } ] ]
             Each suggestion should have 3 fields:
             - "before" - the text before the suggestion
             - "after" - the text after the suggestion
@@ -50,44 +48,7 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             Then you must separate those two types of answers, so it won't be confusing like this example : 
             [ "the corrected string", [Json Array]]
             example of how you format the JSON array:
-            [
-            {
-                "Incorrect": "Hllo",
-                "Correct": "Hello",
-                "Context": "Hllo wold her",
-                "Type": "Spelling"
-            },
-            {
-                "Incorrect": "wold",
-                "Correct": "world",
-                "Context": "Hllo wold her",
-                "Type": "Spelling"
-            },
-            {
-                "Incorrect": "her",
-                "Correct": "here",
-                "Context": "Hllo wold her",
-                "Type": "Spelling"
-            },
-            {
-                "Incorrect": "I goes",
-                "Correct": "I go",
-                "Context": "I goes to the park every day",
-                "Type": "Grammar"
-            },
-            {
-                "Incorrect": "Its raining",
-                "Correct": "It's raining",
-                "Context": "Its raining outside",
-                "Type": "Punctuation"
-            },
-            {
-                "Incorrect": "teh",
-                "Correct": "the",
-                "Context": "I love teh smell of rain",
-                "Type": "Typo"
-            }
-            ]
+            [ "Hello world, I go to the park everyday, it's raining outside, I love the smell of the rain" , [{ "Incorrect": "Hllo","Correct": "Hello","Context": "Hllo wold her", "Type": "Spelling"},{"Incorrect": "I goes","Correct": "I go","Context": "I goes to the park every day","Type": "Grammar"},{"Incorrect": "Its raining","Correct": "It's raining","Context": "Its raining outside","Type": "Punctuation"},{"Incorrect": "teh","Correct": "the","Context": "I love teh smell of rain","Type": "Typo"}]]
             Each corrected word should have 3 fields:
             - "Incorrect" - the incorrect word before correction
             - "Correct" - the corrected word
