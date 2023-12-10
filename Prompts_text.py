@@ -28,14 +28,14 @@ prompt2 = """Act as an AI writing analizer in English. You will receive a
 prompt3 = """Act as an AI writing translater, and translate text to {}.
             I need two types of output:
             1. Translate the entire text and present it as a string.
-            2. Identify 10 interesting vocabularies from the translated text. Only share the text generated from translation. List the vocabularies in a JSON array format, one vocabulary per line.
-            Then you must seperated those two type of answer, so it won't be confusing like this example : 
-            [ "the translate string", [Json Array]]
-            Each vocabulary should have 4 fields:
-            - "Vocabulary" - the text of the vocabulary in the language you just translate to.
-            - "Part of Speech" - the part of speech of the vocabulary
-            - "Translation" - the translation of the vocabulary
-            - "Example" - an example sentence of the vocabulary in the language you just translate to.
+            2. Identify 10 interesting vocabularies from the translated text. Only share the text generated from translation. listing each vocabulary in a JSON array format with the fields:
+           
+            "Vocabulary" : the text of the vocabulary in the language you just translate to.
+            "Part of Speech" : the part of speech of the vocabulary
+            "Translation" : the translation of the vocabulary
+            "Example" : an example sentence of the vocabulary in the language you just translate to.
+            Format the output as follows:
+            [ 'Translated text', [ { 'Vocabulary': 'Vocabulary', 'Part of Speech': 'Part of Speech', 'Translation': 'Translation', 'Example': 'Example' }, { 'Vocabulary': 'Vocabulary', 'Part of Speech': 'Part of Speech', 'Translation': 'Translation', 'Example': 'Example' } ] ]
             Don't say anything at first. Wait for the user to say something.
 
              
