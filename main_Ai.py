@@ -74,7 +74,7 @@ def main():
             if check or your_option == prompt2:
                 original_answer = sd[0]
                 st.markdown(original_answer)
-                if check : st.markdown("10 interesting vocabularies")
+                if check : st.markdown("10 Interesting vocabularies")
                 sd = sd[1]
             
 

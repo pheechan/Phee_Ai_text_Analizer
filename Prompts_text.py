@@ -35,7 +35,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             "Example" : an example sentence of the vocabulary in the language you just translate to.
             Format the output as follows:
             [
-                'Translated text placeholder',
+                'Translated text string',
                 [
                     {{
                         'Vocabulary': 'Vocabulary1',
@@ -49,6 +49,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
                         'Translation': 'Translation2',
                         'Example': 'Example2'
                     }}
+                    // ... for 10 vocabularies
                 ]
             ]
             Don't say anything at first. Wait for the user to say something.
