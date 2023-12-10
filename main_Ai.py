@@ -37,7 +37,7 @@ def main():
     elif your_option == 'Translator': 
         lang_option = st.selectbox(
             "Which language do you want to translate to?",
-            ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish", "Thai"),
+            ("German", "French", "Spanish", "Italian", "Portuguese")
             index=None,
             placeholder="Select language...",
         )

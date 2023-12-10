@@ -11,18 +11,18 @@ prompt1 = """Act as an AI writing tutor in English. You will receive a
 
 prompt2 = """Act as an AI writing analizer in English. You will receive a 
             piece of writing and you should make the writing more human-like, making it less-detectable that it was from ai, two factors are crucial, “perplexity” and “burstiness.” Perplexity measures the complexity of text. Separately, burstiness compares the variations of sentences. Humans tend to write with greater burstiness, for example, with some longer or complex sentences alongside shorter ones. AI sentences tend to be more uniform. Therefore, when writing the following content I am going to ask you to create, it need it to have a good amount of perplexity and burstiness.
-            You must output 2 type of answer.
-            1. You will rewrite the whole writing and output it as String
-            2. Then you must give suggestions on how to improve it. List the suggestions in a JSON array, one suggestion per line.
-            Then you must seperated those two type of answer like this example : 
-            [ "the rewrite string", [Json Array]]
-            ex formatted: 
-            [ "Hello, world!", [ { "before": "Hello world", "after": "Hello, world", "category": "grammar", "comment": "Add a comma after 'Hello' to separate it from 'world'." } ] ]
-            Each suggestion should have 3 fields:
-            - "before" - the text before the suggestion
-            - "after" - the text after the suggestion
-            - "category" - the category of the suggestion one of "grammar", "style", "word choice", "other"
-            - "comment" - a comment about the suggestion
+            I need two types of output:
+
+            1. Rewrite the text to make it more human-like with increased perplexity and burstiness.
+
+            2. Provide suggestions on how to enhance the text, listing each suggestion in a JSON array format with the fields:
+
+            'before': The text before the suggested change.
+            'after': The text after implementing the suggestion.
+            'category': The category of the suggestion (e.g., 'grammar', 'style', 'word choice', 'other').
+            'comment': A comment or explanation about the suggested change.
+            Format the output as follows:
+            [ 'Rewritten text', [ { 'before': 'Text before change', 'after': 'Text after change', 'category': 'Category', 'comment': 'Comment about the change.' } ] ]
             Don't say anything at first. Wait for the user to say something.
         """ 
 prompt3 = """Act as an AI writing translater, and translate text to {}.
@@ -31,7 +31,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             2. Then you must find interesting 10 vocabularies. Say only the writing that you generated, List the vocabulary in a JSON array, one vocabulary per line.
             Then you must seperated those two type of answer, so it won't be confusing like this example : 
             [ "the translate string", [Json Array]]
-            Each vocabulary should have 3 fields:
+            Each vocabulary should have 4 fields:
             - "Vocabulary" - the text of the vocabulary in the language you just translate to.
             - "Part of Speech" - the part of speech of the vocabulary
             - "Translation" - the translation of the vocabulary
@@ -49,7 +49,7 @@ prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing an
             [ "the corrected string", [Json Array]]
             example of how you format the JSON array:
             [ "Hello world, I go to the park everyday, it's raining outside, I love the smell of the rain" , [{ "Incorrect": "Hllo","Correct": "Hello","Context": "Hllo wold her", "Type": "Spelling"},{"Incorrect": "I goes","Correct": "I go","Context": "I goes to the park every day","Type": "Grammar"},{"Incorrect": "Its raining","Correct": "It's raining","Context": "Its raining outside","Type": "Punctuation"},{"Incorrect": "teh","Correct": "the","Context": "I love teh smell of rain","Type": "Typo"}]]
-            Each corrected word should have 3 fields:
+            Each corrected word should have 4 fields:
             - "Incorrect" - the incorrect word before correction
             - "Correct" - the corrected word
             - "Context" - a sentence showing the word in context
