@@ -2,8 +2,18 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
-from Prompts_text import prompt1, prompt2, prompt3, prompt4, prompt5
+from Prompts_text import prompt2, prompt3, prompt4, prompt5
 
+prompt1 = """Act as an AI writing tutor in English. You will receive a 
+            piece of writing and you should give suggestions on how to improve it.
+            List the suggestions in a JSON array, one suggestion per line.
+            Each suggestion should have 3 fields:
+            - "before" - the text before the suggestion
+            - "after" - the text after the suggestion
+            - "category" - the category of the suggestion one of "grammar", "style", "word choice", "other"
+            - "comment" - a comment about the suggestion
+            Don't say anything at first. Wait for the user to say something.
+        """
 def init():
     # Set up the streamlit app
     st.set_page_config(
