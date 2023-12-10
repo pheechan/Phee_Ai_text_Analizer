@@ -33,9 +33,25 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             "Part of Speech" : the part of speech of the vocabulary
             "Translation" : the translation of the vocabulary
             "Example" : an example sentence of the vocabulary in the language you just translate to.
-            Format the output as follows:
-            'Translated text string'
-            'Vocabulary list JSON array'    
+            Format the output only as SAME as follows(Ignore the double curly braces and replace with one curly braces):
+            [
+                'Translated text string',
+                [
+                    {{
+                        'Vocabulary': 'Vocabulary1',
+                        'Part of Speech': 'Part of Speech1',
+                        'Translation': 'Translation1',
+                        'Example': 'Example1'
+                    }},
+                    {{
+                        'Vocabulary': 'Vocabulary2',
+                        'Part of Speech': 'Part of Speech2',
+                        'Translation': 'Translation2',
+                        'Example': 'Example2'
+                    }}
+                    // ... for 10 vocabularies
+                ]
+            ]
             Don't say anything at first. Wait for the user to say something.
         """
 
