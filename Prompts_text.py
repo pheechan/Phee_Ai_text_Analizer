@@ -34,7 +34,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             "Part of Speech" : the part of speech of the vocabulary
             "Translation" : the translation of the vocabulary
             "Example" : an example sentence of the vocabulary in the language you just translate to.
-            Format the output as follows:
+            Format the output as SAME as follows and I literally mean the SAME:
             [
                 'Translated text',
                 [
