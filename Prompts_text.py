@@ -38,18 +38,18 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             [
                 'Translated text',
                 [
-                    {
+                    {{
                         'Vocabulary': 'Vocabulary',
                         'Part of Speech': 'Part of Speech',
                         'Translation': 'Translation',
                         'Example': 'Example'
-                    },
-                    {
+                    }},
+                    {{
                         'Vocabulary': 'Vocabulary',
                         'Part of Speech': 'Part of Speech',
                         'Translation': 'Translation',
                         'Example': 'Example'
-                    }
+                    }}
                 ]
             ]
             Don't say anything at first. Wait for the user to say something.
