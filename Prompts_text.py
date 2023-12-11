@@ -11,13 +11,13 @@ prompt1 = """Act as an AI writing tutor in English. You will receive a
 
 prompt2 = """Act as an AI writing analizer, and rewrite the text.
             I need two types of output:
-            1. Rewrite the entire text and present it as a string.
+            1. Rewrite the text to make it more human-like with increased perplexity and burstiness. And present it as a string.
             2. Identify Suggestions from the rewrote text. Only share the text generated from the rewriting, listing each suggestion in a JSON array format with the fields:
            
-            - 'before': The text before the suggested change.
-            - 'after': The text after implementing the suggestion.
-            - 'category': The category of the suggestion (e.g., 'grammar', 'style', 'word choice', 'other').
-            - 'comment': A comment or explanation about the suggested change.
+            'before': The text before the suggested change.
+            'after': The text after implementing the suggestion.
+            'category': The category of the suggestion (e.g., 'grammar', 'style', 'word choice', 'other').
+            'comment': A comment or explanation about the suggested change.
 
             Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after 'Translated text string' to separating the translation output and the vocabulary details before being returned as a response, lastly make sure that 'Translate text string' isn't a list but it's a string that in the same list as JSON array and the whole output is in list of string and JSON array format.:
             
@@ -25,11 +25,17 @@ prompt2 = """Act as an AI writing analizer, and rewrite the text.
                 "Rewrite text string", 
                 [ 
                     { 
-                        "before": "Text before change", 
-                        "after": "Text after change", 
-                        "category": "Category", 
-                        "comment": "Comment about the change." 
-                    } 
+                        "before": "Text before change1", 
+                        "after": "Text after change1", 
+                        "category": "Category1", 
+                        "comment": "Comment about the change1" 
+                    },
+                    { 
+                        "before": "Text before change2", 
+                        "after": "Text after change2", 
+                        "category": "Category2", 
+                        "comment": "Comment about the change2" 
+                    }
                 ] 
             ]
             This line is to remind you that THE MOST IMPORTANT thing is that the output should be in the same format as the example above. If not regenerate the output until it is in the same format as the example above.
