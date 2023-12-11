@@ -71,8 +71,8 @@ def main():
         st.markdown('**AI response:**')
         suggestion_answer = response.choices[0].message.content
         #Debugging
-        st.markdown("DEBUG answer:")
-        st.markdown(suggestion_answer)
+        # st.markdown("DEBUG answer:")
+        # st.markdown(suggestion_answer)
         
         st.markdown("--------------------------------")
 
