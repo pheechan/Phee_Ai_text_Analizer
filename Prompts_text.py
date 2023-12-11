@@ -52,19 +52,19 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             "Example" : an example sentence of the vocabulary in the language you just translate to.
             Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after 'Translated text string' to separating the translation output and the vocabulary details before being returned as a response, lastly make sure that 'Translate text string' isn't a list but it's a string that in the same list as JSON array and the whole output is in list of string and JSON array format.:
             [
-                'Translated text string',
+                "Translated text string",
                 [
                     {{
-                        'Vocabulary': 'Vocabulary1',
-                        'Part of Speech': 'Part of Speech1',
-                        'Translation': 'Translation1',
-                        'Example': 'Example1'
+                        "Vocabulary": "Vocabulary1",
+                        "Part of Speech": "Part of Speech1",
+                        "Translation": "Translation1",
+                        "Example": "Example1"
                     }},
                     {{
-                        'Vocabulary': 'Vocabulary2',
-                        'Part of Speech': 'Part of Speech2',
-                        'Translation': 'Translation2',
-                        'Example': 'Example2'
+                        "Vocabulary": "Vocabulary2",
+                        "Part of Speech": "Part of Speech2",
+                        "Translation": "Translation2",
+                        "Example": "Example2"
                     }}
                     // ... for 10 vocabularies
                 ]
