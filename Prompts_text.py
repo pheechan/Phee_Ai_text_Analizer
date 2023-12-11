@@ -33,7 +33,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
             "Part of Speech" : the part of speech of the vocabulary
             "Translation" : the translation of the vocabulary
             "Example" : an example sentence of the vocabulary in the language you just translate to.
-            Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to write a comma separating the translation output and the vocabulary details before being returned as a response, lastly make sure that the whole output is in list of string and list of JSON array in the same list format.:
+            Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after 'Translated text string' to separating the translation output and the vocabulary details before being returned as a response, lastly make sure that the whole output is in list of string and list of JSON array in the same list format.:
             [
                 'Translated text string',
                 [
