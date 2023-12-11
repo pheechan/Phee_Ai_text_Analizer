@@ -39,7 +39,7 @@ def main():
             "Which language do you want to translate to?",
             ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish", "Thai"),
             index=None,
-            placeholder="Select language",
+            placeholder="Select language...",
         )
         st.write('You selected:', lang_sel)
         lang_option = languages_key[lang_sel]
@@ -58,7 +58,7 @@ def main():
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages_so_far,
-            temperature = 0.2
+            #temperature = 
         )
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
