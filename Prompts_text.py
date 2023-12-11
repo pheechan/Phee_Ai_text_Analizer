@@ -41,6 +41,7 @@ prompt2 = """Act as an AI writing analizer, and rewrite the text.
             This line is to remind you that THE MOST IMPORTANT thing is that the output should be in the same format as the example above. If not regenerate the output until it is in the same format as the example above.
             Don't say anything at first. Wait for the user to say something.
             """
+
 prompt3 = """Act as an AI writing translater, and translate text to {}.
             I need two types of output:
             1. Translate the entire text and present it as a string.
@@ -108,6 +109,7 @@ prompt4 = """Act as an AI writing corrector, and correct the text tht you reciev
             Remember, THE MOST IMPORTANT thing is that the output should be in the same format as the example above. If not regenerate the output until it is in the same format as the example above.
             Don't say anything at first. Wait for the user to say something.
         """
+
 prompt5 = """Act as an AI writing summarize, and summarize the text.
             I need two types of output:
             1. Summarize the entire text and present it as a string.
