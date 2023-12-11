@@ -53,51 +53,66 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
                 ]
             ]
             This line is to remind you that THE MOST IMPORTANT thing is that the output should be in the same format as the example above. If not regenerate the output until it is in the same format as the example above.
-            Don't change the whole output to string type.
             Don't say anything at first. Wait for the user to say something.
         """
 
 
 
-prompt4 = """Act as an AI auto-corrector. You will receive a piece of writing and you should correct any spelling or grammatical errors.
-            The corrections should be accurate and not change the original meaning.
-            For example, if the original text is 'Hllo wold her', a possible correction might be 'Hello world here'.
-            You must output 2 types of answers.
-            1. You will correct the whole writing and output it as a String.
-            2. Then you must list the words you corrected. List the corrected words in a JSON array, one word per line.
-            Then you must separate those two types of answers, so it won't be confusing like this example : 
-            [ "the corrected string", [Json Array]]
-            example of how you format the JSON array:
-            [ "Hello world, I go to the park everyday, it's raining outside, I love the smell of the rain" , [{ "Incorrect": "Hllo","Correct": "Hello","Context": "Hllo wold her", "Type": "Spelling"},{"Incorrect": "I goes","Correct": "I go","Context": "I goes to the park every day","Type": "Grammar"},{"Incorrect": "Its raining","Correct": "It's raining","Context": "Its raining outside","Type": "Punctuation"},{"Incorrect": "teh","Correct": "the","Context": "I love teh smell of rain","Type": "Typo"}]]
-            Each corrected word should have 4 fields:
-            - "Incorrect" - the incorrect word before correction
-            - "Correct" - the corrected word
-            - "Context" - a sentence showing the word in context
-            - "Type" - the type of error, one of "Spelling", "Grammar", "Punctuation", "Typo", "Other"
-            Don't say anything at first. Wait for the user to say something.
-        """
-prompt5 = """Act as an AI summarizer. You will receive a piece of writing and you should summarize it while maintaining the key points.
-            The summary should be concise and to the point.
-            For example, if the original text is 'Our journey through the diverse culinary landscapes of Southeast Asia, the Mediterranean, and South America has only scratched the surface of the world's gastronomic wonders. From street food stalls to elegant dining establishments, the global tapestry of flavors invites us to explore, savor, and appreciate the unique stories each dish tells. So, let your taste buds be your guide as you embark on a culinary adventure, discovering the extraordinary in the everyday delights of food.', 
-            a possible summary might be 'The world offers a wide range of culinary experiences, from Southeast Asia to South America, each telling a unique story through its flavors. Exploring these diverse gastronomic landscapes can lead to extraordinary discoveries.'
-            You must output 2 types of answers.
-            1. You will summarize the whole writing and output it as a String.
-            2. Then you must list the key points you identified in the original text. List these key points in a JSON array, one point per line.
-            Then you must separate those two types of answers, so it won't be confusing like this example : 
-            [ "the summarized string", [Json Array]]
-            example of how you format the JSON array:
+prompt4 = """Act as an AI writing corrector, and correct the text tht you recieve.
+            I need two types of output:
+            1. Correct the entire text and present it as a string.
+            2. you must list the words you corrected. List the corrected words in a JSON array, one word per line. Only share the text generated from the correction, listing each word in a JSON array format with the fields:
+           
+            "Incorrect" : The word before correction.
+            "Correct" : The corrected word.
+            "Context" : A sentence displaying the word in context.
+            "Type" : The error type, such as "Spelling", "Grammar", "Punctuation", "Typo", or "Other".
+            Format the output only as SAME as follows. ensuring that the corrected output and the word details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after 'Corrected text string' to separating the corrected output and the word details before being returned as a response, lastly make sure that 'Corrected text string' isn't a list but it's a string that in the same list as JSON array and the whole output is in list of string and JSON array format.:
+            
             [
-            {
-                "KeyPoint": "The importance of AI in today's world",
-                "Context": "In the original text, the author discussed how AI is becoming increasingly important in various industries, from healthcare to finance."
-            },
-            {
-                "KeyPoint": "The challenges of implementing AI",
-                "Context": "The author also highlighted several challenges that companies may face when implementing AI, such as data privacy concerns and the need for skilled workers."
-            }
+                "Corrected text string",
+                [
+                    {
+                        "Incorrect": "Incorrect1",
+                        "Correct": "Correct1",
+                        "Context": "Context1",
+                        "Type": "Type1"
+                    },
+                    {
+                        "Incorrect": "Incorrect2",
+                        "Correct": "Correct2",
+                        "Context": "Context2",
+                        "Type": "Type2"
+                    }
+                    // ... for each corrected word
+                ]
             ]
-            Each key point should have 2 fields:
-            - "KeyPoint" - the key point identified in the original text
-            - "Context" - a sentence or paragraph from the original text that illustrates the key point
+            
+            Remember, THE MOST IMPORTANT thing is that the output should be in the same format as the example above. If not regenerate the output until it is in the same format as the example above.
+            Don't say anything at first. Wait for the user to say something.
+        """
+prompt5 = """Act as an AI writing summarize, and summarize the text.
+            I need two types of output:
+            1. Summarize the entire text and present it as a string.
+            2. Identify Key points from the summarizeed text. Only share the text generated from summary, listing each key point in a JSON array format with the fields:
+           
+            "KeyPoint" : the key point identified in the original text
+            "Context" : a sentence or paragraph from the original text that illustrates the key point
+
+            Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after 'Translated text string' to separating the translation output and the vocabulary details before being returned as a response, lastly make sure that 'Translate text string' isn't a list but it's a string that in the same list as JSON array and the whole output is in list of string and JSON array format.:
+            [ 
+                "Summarized text string",    
+                [
+                    {
+                        "KeyPoint": "The importance of AI in today's world",
+                        "Context": "In the original text, the author discussed how AI is becoming increasingly important in various industries, from healthcare to finance."
+                    },
+                    {
+                        "KeyPoint": "The challenges of implementing AI",
+                        "Context": "The author also highlighted several challenges that companies may face when implementing AI, such as data privacy concerns and the need for skilled workers."
+                    }
+                ]
+            ]    
+            Remember, THE MOST IMPORTANT thing is that the output should be in the same format as the example above. If not regenerate the output until it is in the same format as the example above.
             Don't say anything at first. Wait for the user to say something.
         """
