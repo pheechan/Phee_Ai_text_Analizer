@@ -42,9 +42,15 @@ def main():
             placeholder="Select language...",
         )
         st.write('You selected:', lang_sel)
-        lang_option = languages_key[lang_sel]
+        # catch Keyerror
+        if(lang_sel != None): 
+            lang_option = languages_key[lang_sel]
+            your_option = prompt3.format(lang_option)
+        else :
+            your_option = prompt3.format(lang_sel)
+
         check = True
-        your_option = prompt3.format(lang_option)
+        
     elif your_option == 'Auto-Corrector': your_option = prompt4
     elif your_option == 'Summarizer': your_option = prompt5
     
@@ -71,7 +77,7 @@ def main():
 
         try:
             if suggestion_answer[0] != '[' or suggestion_answer[len(suggestion_answer)-1] != ']':
-                st.markdown("Sorry, Please Submit again.")
+                st.markdown("Sorry, Please Submit again. 1")
             else : 
                 sd = json.loads(suggestion_answer)
             
@@ -86,9 +92,9 @@ def main():
                 print(suggestion_df)
                 st.table(suggestion_df)
         except json.JSONDecodeError:
-            st.markdown("Sorry, Please Submit again.")
+            st.markdown("Sorry, Please Submit again. 2")
         except IndexError:
-            st.markdown("Sorry, Please Submit again.")
+            st.markdown("Sorry, Please Submit again. 3")
 
 if __name__ == "__main__":
     main()
