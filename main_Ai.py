@@ -71,7 +71,7 @@ def main():
 
         try:
             if suggestion_answer[0] != '[' or suggestion_answer[len(suggestion_answer)-1] != ']':
-                st.markdown("Sorry, Please Submit again. 1")
+                st.markdown("Sorry, Please Submit again.")
             else : 
                 sd = json.loads(suggestion_answer)
             
@@ -86,9 +86,9 @@ def main():
                 print(suggestion_df)
                 st.table(suggestion_df)
         except json.JSONDecodeError:
-            st.markdown("Sorry, Please Submit again. 2")
+            st.markdown("Sorry, Please Submit again.")
         except IndexError:
-            st.markdown("Sorry, Please Submit again. 3")
+            st.markdown("Sorry, Please Submit again.")
 
 if __name__ == "__main__":
     main()

@@ -14,10 +14,10 @@ prompt2 = """Act as an AI writing analizer, and rewrite the text.
             1. Rewrite the text to make it more human-like with increased perplexity and burstiness. And present it as a string.
             2. Identify Suggestions from the rewrote text. Only share the text generated from the rewriting, listing each suggestion in a JSON array format with the fields:
            
-            "before": The text before the suggested change.
-            "after": The text after implementing the suggestion.
-            "category": The category of the suggestion (e.g., "grammar", "style", "word choice", "other").
-            "comment": A comment or explanation about the suggested change.
+            'before': The text before the suggested change.
+            'after': The text after implementing the suggestion.
+            'category': The category of the suggestion (e.g., 'grammar', 'style', 'word choice', 'other').
+            'comment': A comment or explanation about the suggested change.
 
             Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after 'Translated text string' to separating the translation output and the vocabulary details before being returned as a response, lastly make sure that 'Translate text string' isn't a list but it's a string that in the same list as JSON array and the whole output is in list of string and JSON array format.:
             
