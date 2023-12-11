@@ -58,7 +58,7 @@ def main():
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages_so_far,
-            #temperature = 
+            #temperature = 0
         )
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
@@ -70,8 +70,8 @@ def main():
         st.markdown("--------------------------------")
 
         try:
-            if suggestion_answer[0] != '[' or suggestion_answer[len(suggestion_answer)-1] != ']':
-                st.markdown("Sorry, Please Submit again.")
+            if suggestion_answer[0] != '[' or suggestion_answer[len(suggestion_answer)-1] != ']' or suggestion_answer[len(suggestion_answer)-2] != ']':
+                st.markdown("Sorry, Please Submit again. 1")
             else : 
                 sd = json.loads(suggestion_answer)
             
@@ -86,9 +86,9 @@ def main():
                 print(suggestion_df)
                 st.table(suggestion_df)
         except json.JSONDecodeError:
-            st.markdown("Sorry, Please Submit again.")
+            st.markdown("Sorry, Please Submit again. 2")
         except IndexError:
-            st.markdown("Sorry, Please Submit again.")
+            st.markdown("Sorry, Please Submit again. 3")
 
 if __name__ == "__main__":
     main()

@@ -111,14 +111,14 @@ prompt4 = """Act as an AI writing corrector, and correct the text tht you reciev
 prompt5 = """Act as an AI writing summarize, and summarize the text.
             I need two types of output:
             1. Summarize the entire text and present it as a string.
-            2. you must list the Identify Key points .List the Key points in a JSON array, one word per line. Only share the text generated from the summary, listing each key point in a JSON array format with the fields:
+            2. you must list the Key points and List the Key points in a JSON array, one word per line. Only share the text generated from the summary, listing each key point in a JSON array format with the fields:
            
             "KeyPoint" : the key point identified in the original text
             "Context" : a sentence or paragraph from the original text that illustrates the key point
 
-            Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after 'Summarized text string' to separating the summary output and the keypoint details before being returned as a response, lastly make sure that 'Summarize text string' isn't a list but it's a string that in the same list as JSON array and the whole output is in list of string and JSON array format.:
+            Format the output only as SAME as follows. ensuring that the translation output and the vocabulary details are properly separated into their respective list formats (string and dictionaries/JSON array) and don't forget to add a comma after "Summarized text string" to separating the summary output and the keypoint details before being returned as a response, lastly make sure that 'Summarize text string' isn't a list but it's a string that in the same list as JSON array and the whole output is in list of string and JSON array format.:
             [ 
-                "Text after change",    
+                "Summarized text string",    
                 [
                     {
                         "KeyPoint": "Keypoint1",
