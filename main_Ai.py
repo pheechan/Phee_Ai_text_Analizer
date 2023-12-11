@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
-from Prompts_text import prompt1, prompt2, prompt3, prompt4, prompt5, languages_key
+from Prompts_text import prompt1, prompt2, prompt3, prompt4, prompt5
 
 def init():
     # Set up the streamlit app
@@ -58,7 +58,7 @@ def main():
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages_so_far,
-            #temperature = 
+            temperature = 0.2
         )
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
@@ -92,3 +92,64 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+languages_key = {
+    "Select Language": None,
+    "Afrikaans": "af",
+    "Arabic": "ar",
+    "Bulgarian": "bg",
+    "Bengali": "bn",
+    "Bosnian": "bs",
+    "Catalan": "ca",
+    "Czech": "cs",
+    "Danish": "da",
+    "German": "de",
+    "Greek": "el",
+    "English": "en",
+    "Spanish": "es",
+    "Estonian": "et",
+    "Finnish": "fi",
+    "French": "fr",
+    "Gujarati": "gu",
+    "Hindi": "hi",
+    "Croatian": "hr",
+    "Hungarian": "hu",
+    "Indonesian": "id",
+    "Icelandic": "is",
+    "Italian": "it",
+    "Hebrew": "iw",
+    "Japanese": "ja",
+    "Javanese": "jw",
+    "Khmer": "km",
+    "Kannada": "kn",
+    "Korean": "ko",
+    "Latin": "la",
+    "Latvian": "lv",
+    "Malayalam": "ml",
+    "Marathi": "mr",
+    "Malay": "ms",
+    "Burmese": "my",
+    "Nepali": "ne",
+    "Dutch": "nl",
+    "Norwegian": "no",
+    "Polish": "pl",
+    "Portuguese": "pt",
+    "Romanian": "ro",
+    "Russian": "ru",
+    "Sinhala": "si",
+    "Slovak": "sk",
+    "Albanian": "sq",
+    "Serbian": "sr",
+    "Sundanese": "su",
+    "Swedish": "sv",
+    "Swahili": "sw",
+    "Tamil": "ta",
+    "Telugu": "te",
+    "Thai": "th",
+    "Filipino": "tl",
+    "Turkish": "tr",
+    "Ukrainian": "uk",
+    "Urdu": "ur",
+    "Vietnamese": "vi",
+    "Chinese": "zh-CN",
+}
