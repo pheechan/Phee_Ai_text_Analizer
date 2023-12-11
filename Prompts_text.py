@@ -1,5 +1,6 @@
 
 languages_key = {
+    "Select language": None,
     "Afrikaans": "af",
     "Arabic": "ar",
     "Bulgarian": "bg",
