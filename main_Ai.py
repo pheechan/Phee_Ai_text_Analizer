@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 import pandas as pd
 import json
-from Prompts_text import prompt1, prompt2, prompt3, prompt4, prompt5
+from Prompts_text import prompt1, prompt2, prompt3, prompt4, prompt5, languages_key
 
 def init():
     # Set up the streamlit app
@@ -35,14 +35,15 @@ def main():
     if your_option == 'pnan': your_option = prompt1
     elif your_option == 'Rewriter': your_option = prompt2
     elif your_option == 'Translator': 
-        lang_option = st.selectbox(
+        lang_sel = st.selectbox(
             "Which language do you want to translate to?",
             ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish", "Thai"),
             index=None,
             placeholder="Select language...",
         )
-        check = True
         st.write('You selected:', lang_option)
+        lang_option = languages_key[lang_sel]
+        check = True
         your_option = prompt3.format(lang_option)
     elif your_option == 'Auto-Corrector': your_option = prompt4
     elif your_option == 'Summarizer': your_option = prompt5
