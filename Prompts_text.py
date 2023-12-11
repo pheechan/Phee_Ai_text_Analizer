@@ -104,12 +104,12 @@ prompt5 = """Act as an AI writing summarize, and summarize the text.
                 "Summarized text string",    
                 [
                     {
-                        "KeyPoint": "The importance of AI in today's world",
-                        "Context": "In the original text, the author discussed how AI is becoming increasingly important in various industries, from healthcare to finance."
+                        "KeyPoint": "Keypoint1",
+                        "Context": "Context1"
                     },
                     {
-                        "KeyPoint": "The challenges of implementing AI",
-                        "Context": "The author also highlighted several challenges that companies may face when implementing AI, such as data privacy concerns and the need for skilled workers."
+                        "KeyPoint": "Keypoint2",
+                        "Context": "Context2"
                     }
                 ]
             ]    
