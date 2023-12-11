@@ -42,9 +42,9 @@ def main():
             placeholder="Select language...",
         )
         st.write('You selected:', lang_sel)
-        lang_option = languages_key[lang_sel]
+        # lang_option = languages_key[lang_sel]
         check = True
-        your_option = prompt3.format(lang_option)
+        your_option = prompt3.format(lang_sel)
     elif your_option == 'Auto-Corrector': your_option = prompt4
     elif your_option == 'Summarizer': your_option = prompt5
     
