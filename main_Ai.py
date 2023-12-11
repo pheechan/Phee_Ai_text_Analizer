@@ -37,7 +37,7 @@ def main():
     elif your_option == 'Translator': 
         lang_option = st.selectbox(
             "Which language do you want to translate to?",
-            ("French", "Spanish", "Italian", "Portuguese"),
+            ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish", "Thai"),
             index=None,
             placeholder="Select language...",
         )
@@ -56,8 +56,7 @@ def main():
         ]
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=messages_so_far,
-            temperature=0
+            messages=messages_so_far
         )
         # Show the response from the AI in a box
         st.markdown('**AI response:**')
@@ -65,24 +64,29 @@ def main():
         #Debugging
         st.markdown("DEBUG answer:")
         st.markdown(suggestion_answer)
-        st.markdown(type(suggestion_answer))
-        st.markdown("--------------------------------")
-        if suggestion_answer[0] != '[':
-            st.markdown("Sorry, Please Submit again.")
-        else : 
-            sd = json.loads(suggestion_answer)
         
-            if check or your_option == prompt2:
-                original_answer = sd[0]
-                st.markdown(original_answer)
-                if check : st.markdown("10 Interesting vocabularies")
-                sd = sd[1]
-            
+        st.markdown("--------------------------------")
 
-            print (sd)
-            suggestion_df = pd.DataFrame.from_dict(sd)
-            print(suggestion_df)
-            st.table(suggestion_df)
+        try:
+            if suggestion_answer[0] != '[' or suggestion_answer[len(suggestion_answer)-1] != ']':
+                st.markdown("Sorry, Please Submit again.")
+            else : 
+                sd = json.loads(suggestion_answer)
+            
+                if check or your_option == prompt2 or your_option == prompt5 or your_option == prompt4:
+                    original_answer = sd[0]
+                    st.markdown(original_answer)
+                    if check and len(sd) > 1: st.markdown("Interesting Vocabulary Lists")
+                    if len(sd) > 1: sd = sd[1]
+                
+                print (sd)
+                suggestion_df = pd.DataFrame.from_dict(sd)
+                print(suggestion_df)
+                st.table(suggestion_df)
+        except json.JSONDecodeError:
+            st.markdown("Sorry, Please Submit again.")
+        except IndexError:
+            st.markdown("Sorry, Please Submit again.")
 
 if __name__ == "__main__":
     main()
