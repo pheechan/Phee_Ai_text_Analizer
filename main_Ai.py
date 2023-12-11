@@ -65,7 +65,7 @@ def main():
         #Debugging
         st.markdown("DEBUG answer:")
         st.markdown(suggestion_answer)
-        
+        st.markdown(type(suggestion_answer))
         st.markdown("--------------------------------")
         if suggestion_answer[0] != '[':
             st.markdown("Sorry, Please Submit again.")
