@@ -53,6 +53,7 @@ prompt3 = """Act as an AI writing translater, and translate text to {}.
                 ]
             ]
             This line is to remind you that the output should be in the same format as the example above. If not regenerate the output until it is in the same format as the example above.
+            Don't change the whole output to string type. The output should be in list of string and JSON array in the same list format.
             Don't say anything at first. Wait for the user to say something.
         """
 
