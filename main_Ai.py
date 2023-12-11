@@ -41,7 +41,7 @@ def main():
             index=None,
             placeholder="Select language...",
         )
-        st.write('You selected:', lang_option)
+        st.write('You selected:', lang_sel)
         lang_option = languages_key[lang_sel]
         check = True
         your_option = prompt3.format(lang_option)
