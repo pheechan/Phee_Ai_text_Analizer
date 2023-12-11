@@ -24,7 +24,7 @@ def main():
     
     your_option = st.selectbox(
         "Which Function you want to do?",
-        ('pnan', 'Rewriter', 'Translator', 'Auto-Corrector', 'Summarizer'),
+        ('Rewriter', 'Translator', 'Auto-Corrector', 'Summarizer-(beta)'),
         index=None,
         placeholder="Select Function...",
     )
@@ -32,16 +32,17 @@ def main():
 
     #Function Selected
     check = False
-    if your_option == 'pnan': your_option = prompt1
-    elif your_option == 'Rewriter': your_option = prompt2
+    # if your_option == 'pnan': your_option = prompt1
+    if your_option == 'Rewriter': your_option = prompt2
     elif your_option == 'Translator': 
         lang_sel = st.selectbox(
             "Which language do you want to translate to?",
-            ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Korean", "Arabic", "Hindi", "Turkish", "Thai"),
+            ("German", "French", "Spanish", "Italian", "Portuguese", "Japanese", "Chinese", "Russian", "Arabic", "Hindi", "Turkish"),
             index=None,
             placeholder="Select language...",
         )
         st.write('You selected:', lang_sel)
+        
         # catch Keyerror
         if(lang_sel != None): 
             lang_option = languages_key[lang_sel]
@@ -52,7 +53,7 @@ def main():
         check = True
         
     elif your_option == 'Auto-Corrector': your_option = prompt4
-    elif your_option == 'Summarizer': your_option = prompt5
+    elif your_option == 'Summarizer-(beta)': your_option = prompt5
     
     openai.api_key = my_api_key
     
@@ -80,12 +81,12 @@ def main():
                 st.markdown("Sorry, Please Submit again. 1")
             else : 
                 sd = json.loads(suggestion_answer)
-            
-                if check or your_option == prompt2 or your_option == prompt5 or your_option == prompt4:
-                    original_answer = sd[0]
-                    st.markdown(original_answer)
-                    if check and len(sd) > 1: st.markdown("Interesting Vocabulary Lists")
-                    if len(sd) > 1: sd = sd[1]
+                # condition for split string and json array
+                # if check or your_option == prompt2 or your_option == prompt5 or your_option == prompt4:
+                original_answer = sd[0]
+                st.markdown(original_answer)
+                if check and len(sd) > 1: st.markdown("Interesting Vocabulary Lists")
+                if len(sd) > 1: sd = sd[1]
                 
                 print (sd)
                 suggestion_df = pd.DataFrame.from_dict(sd)
